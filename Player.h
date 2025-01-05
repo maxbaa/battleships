@@ -7,7 +7,7 @@
 
 class Player {
 public:
-	Player(const std::string name);
+	Player(const std::string& name);
 	void placeShip(const Ship& ship);
 	bool reaceiveAttack(int x, int y);
 
