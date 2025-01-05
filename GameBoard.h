@@ -1,16 +1,14 @@
 #ifndef GAMEBOARD_H
 #define GAMEBOARD_H
-
-#include <vector>
+#include "GameConfig.h"
 
 class GameBoard {
 public:
-    GameBoard(int size = 10);
     void display() const;
 
 private:
     int size;
-    std::vector<std::vector<int>> grid;
+    int grid[MAX_X_COORDINATE][MAX_Y_COORDINATE];
 };
 
 #endif
