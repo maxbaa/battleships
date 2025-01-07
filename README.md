@@ -18,5 +18,15 @@ ToDo:
 - [ ] KI
   - [ ] Random Init Ships
   - [ ] Random Target selection
+     
+- [ ] Mercury
+- [x] Venus
+- [x] Earth (Orbit/Moon)
+- [x] Mars
+- [ ] Jupiter
+- [ ] Saturn
+- [ ] Uranus
+- [ ] Neptune
+- [ ] Comet Haley
 
  
