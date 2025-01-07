@@ -11,7 +11,7 @@ ToDo:
   - [ ] In Game Loop
   - [ ] Protokoll festlegen
 - [ ] Hit Detection (Shoot Methode)
-- [ ] In Game logic -> game board
+- [X] In Game logic -> game board
 - [ ] Game Loop
   - [ ] State Machine: Hauptmenu, Ingame, Pausiert
   - [ ] State: Am Zug, Gegner am Zug, Auswertung
