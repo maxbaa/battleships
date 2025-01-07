@@ -15,7 +15,7 @@ public:
 private:
 	void initializeShips();
 	void initializeBoards();
-	void printPlayersBoard();
+	void printBoard(std::string board[MAX_X_COORDINATE][MAX_Y_COORDINATE]);
 	std::string name;
 	std::string playersBoard [MAX_X_COORDINATE][MAX_Y_COORDINATE];
 	std::string bombBoard [MAX_X_COORDINATE][MAX_Y_COORDINATE];

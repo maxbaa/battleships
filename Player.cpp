@@ -7,7 +7,7 @@ Player::Player(const std::string& name)
 {
     this->name = name;
     initializeBoards();
-    printPlayersBoard();
+    printBoard(playersBoard);
     initializeShips();
 }
 
@@ -79,7 +79,7 @@ void Player::placeShip(Ship& ship) {
         }
 
         std::cout << ship.getName() << " platziert!" << std::endl;
-        printPlayersBoard();
+        printBoard(playersBoard);
     }
 }
 
@@ -111,7 +111,7 @@ void Player::initializeBoards() {
     }
 }
 
-void Player::printPlayersBoard() {
+void Player::printBoard(std::string board[MAX_X_COORDINATE][MAX_Y_COORDINATE]) {
     std::cout << "Seekarte:" << std::endl << "  ";
 
     for (int y = 0; y < MAX_Y_COORDINATE; y++) {
@@ -128,7 +128,7 @@ void Player::printPlayersBoard() {
         }
 
         for (int y = 0; y < MAX_Y_COORDINATE; y++) {
-            std::cout << "|" << playersBoard[x][y];
+            std::cout << "|" << board[x][y];
         }
         std::cout << std::endl;
     }
