@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "Ship.h"
+#include "GameConfig.h"
 
 class Player {
 public:
@@ -13,8 +14,11 @@ public:
 
 private:
 	void initializeShips();
+	void initializeBoards();
+	void printPlayersBoard();
 	std::string name;
-	std::vector<std::vector<int>> board;
+	std::string playersBoard [MAX_X_COORDINATE][MAX_Y_COORDINATE];
+	std::string bombBoard [MAX_X_COORDINATE][MAX_Y_COORDINATE];
 	std::vector<Ship> ships;
 };
 #endif
