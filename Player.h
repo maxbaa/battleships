@@ -9,16 +9,14 @@
 class Player {
 public:
 	Player(const std::string& name);
-	void placeShip(Ship& ship);
+	void placeShip(const std::string& name, int size);
 	bool reaceiveAttack(int x, int y);
 
 private:
 	void initializeShips();
-	void initializeBoards();
-	void printBoard(std::string board[MAX_X_COORDINATE][MAX_Y_COORDINATE]);
 	std::string name;
-	std::string playersBoard [MAX_X_COORDINATE][MAX_Y_COORDINATE];
-	std::string bombBoard [MAX_X_COORDINATE][MAX_Y_COORDINATE];
 	std::vector<Ship> ships;
+	GameBoard board;
+
 };
 #endif
