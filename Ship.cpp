@@ -4,8 +4,8 @@
 
 Ship::Ship(const std::string& name, int size, int xCoordinate, int yCoordinate, Orientation orientation) : name(name), size(size), hits(0) {
     for (int i = 0; i < size; i++) {
-        int dx = i * (orientation == Orientation::HORIZONTAL ? 1 : 0);
-        int dy = i * (orientation == Orientation::HORIZONTAL ? 0 : 1);
+        int dx = i * (orientation == Orientation::HORIZONTAL ? 0 : 1);
+        int dy = i * (orientation == Orientation::HORIZONTAL ? 1 : 0);
         coordinates.emplace_back(xCoordinate + dx, yCoordinate + dy);
     }
 }

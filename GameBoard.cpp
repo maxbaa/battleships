@@ -41,10 +41,11 @@ ShootResult GameBoard::shoot(int x, int y) {
  * @return nullptr if the ship cannot be placed, otherwise a pointer to the ship
  */
 Ship* GameBoard::tryPlaceShip(const std::string& name, int size, int xCoordinate, int yCoordinate, Orientation orientation) {
+    std::cout << "tryPlaceShip" << size << " " << xCoordinate << " " << yCoordinate << " " << (orientation == Orientation::HORIZONTAL ? "H" : "V") << std::endl;
     // Check if ship placement is valid
     for (int i = 0; i < size; i++) {
-        int dx = i * (orientation == Orientation::HORIZONTAL ? 1 : 0);
-        int dy = i * (orientation == Orientation::HORIZONTAL ? 0 : 1);
+        int dx = i * (orientation == Orientation::HORIZONTAL ? 0 : 1);
+        int dy = i * (orientation == Orientation::HORIZONTAL ? 1 : 0);
         int x = xCoordinate + dx;
         int y = yCoordinate + dy;
         
@@ -52,14 +53,15 @@ Ship* GameBoard::tryPlaceShip(const std::string& name, int size, int xCoordinate
             return nullptr;
         }
         if (grid[x][y] != CellStates::EMPTY) {
+            std::cout << "tryPlaceShip" << size << " " << xCoordinate << " " << yCoordinate << " " << (orientation == Orientation::HORIZONTAL ? "H" : "V") << " failed" << " at " << x << " " << y << std::endl;
             return nullptr;
         }
     }
 
     // Place the ship
     for (int i = 0; i < size; i++) {
-        int dx = i * (orientation == Orientation::HORIZONTAL ? 1 : 0);
-        int dy = i * (orientation == Orientation::HORIZONTAL ? 0 : 1);
+        int dx = i * (orientation == Orientation::HORIZONTAL ? 0 : 1);
+        int dy = i * (orientation == Orientation::HORIZONTAL ? 1 : 0);
         int x = xCoordinate + dx;
         int y = yCoordinate + dy;
         grid[x][y] = CellStates::SHIP;

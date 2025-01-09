@@ -4,4 +4,5 @@
 int main()
 {
 	Player player1("Max");
+	player1.gameLoop();
 }
