@@ -2,13 +2,13 @@
 #define SHIP_H
 
 #include <iostream>
-#include "GameConfig.h"
-#include "GameBoard.h"
+#include "GameTypes.h"
 #include <vector>
+#include <utility>  // for std::pair
 
 enum class Orientation {
-    HORIZONTAL = 1,
-    VERTICAL = 0
+    HORIZONTAL = 0,
+    VERTICAL = 1
 };
 
 

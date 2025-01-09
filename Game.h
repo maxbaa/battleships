@@ -1,19 +1,19 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Player.h"
+#include "Human.h"
+#include "AI.h"
+#include "GameTypes.h"
 
 class Game {
 public:
     Game(Player& player1, Player& player2);
-    void switchTurn();
-    void playTurn(int x, int y);
-    bool checkWinner() const;
+    void play();
 
 private:
+    void playersTurn(Player& player, Player& opponent);
     Player& player1;
     Player& player2;
-    Player* current_turn;
 };
 
 #endif

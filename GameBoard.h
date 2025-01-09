@@ -1,25 +1,20 @@
 #ifndef GAMEBOARD_H
 #define GAMEBOARD_H
+
 #include "GameConfig.h"
-// #include "Ship.h"
+#include "GameTypes.h"
 #include <string>
 #include <vector>
 
-// Forward declare Ship class instead of including Ship.h
+// Forward declarations
 class Ship;
-enum class Orientation;  // Forward declare Orientation enum
+enum class Orientation;
 
 enum class CellStates {
     EMPTY,
     SHIP,
     HIT,
     MISS
-};
-
-enum class ShootResult {
-    HIT,
-    MISS,
-    SUNK
 };
 
 class GameBoard {

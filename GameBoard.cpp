@@ -28,11 +28,14 @@ ShootResult GameBoard::shoot(int x, int y) {
                 return ShootResult::HIT;
             }
         }
-        return ShootResult::HIT;
+        return ShootResult::INVALID;
     }
-    else {
+    else if (grid[x][y] == CellStates::EMPTY) {
         grid[x][y] = CellStates::MISS;
         return ShootResult::MISS;
+    }
+    else {
+        return ShootResult::INVALID;
     }
 }
 
