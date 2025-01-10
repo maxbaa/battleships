@@ -20,10 +20,11 @@ enum class CellStates {
 class GameBoard {
 public:
     GameBoard();
-    void display() const;
+    void display(std::string text = "Seekarte") const;
     std::vector<Ship*> getShips() const { return ships; }
     Ship* tryPlaceShip(const std::string& name, int size, int xCoordinate, int yCoordinate, Orientation orientation);
     ShootResult shoot(int x, int y);
+    void setCell(int x, int y, CellStates result);
 
 private:
     CellStates grid[MAX_X_COORDINATE][MAX_Y_COORDINATE];

@@ -35,6 +35,8 @@ AttackResult AI::attack(GameBoard& enemyBoard)
     return result;
 }
 
+
+
 std::pair<int, int> AI::getRandomCoordinates()
 {
     int x = rand() % MAX_X_COORDINATE;

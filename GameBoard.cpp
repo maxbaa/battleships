@@ -17,7 +17,7 @@ GameBoard::GameBoard() {
  */
 ShootResult GameBoard::shoot(int x, int y) {
     if (grid[x][y] == CellStates::SHIP) {
-        grid[x][y] = CellStates::HIT;
+        setCell(x, y, CellStates::HIT);
 
         for (Ship* ship : ships) {
             ShootResult result = ship->hit(x, y);
@@ -31,12 +31,16 @@ ShootResult GameBoard::shoot(int x, int y) {
         return ShootResult::INVALID;
     }
     else if (grid[x][y] == CellStates::EMPTY) {
-        grid[x][y] = CellStates::MISS;
+        setCell(x, y, CellStates::MISS);
         return ShootResult::MISS;
     }
     else {
         return ShootResult::INVALID;
     }
+}
+
+void GameBoard::setCell(int x, int y, CellStates result) {
+    grid[x][y] = result;
 }
 
 
@@ -89,8 +93,8 @@ char GameBoard::getCellState(int x, int y) const {
     }
 }
 
-void GameBoard::display() const {
-    std::cout << "Seekarte:" << std::endl << "  ";
+void GameBoard::display(std::string name ) const {
+    std::cout << name << std::endl << "  ";
 
     for (int y = 0; y < MAX_Y_COORDINATE; y++) {
         std::cout << "|" << static_cast<char>('A' + y);

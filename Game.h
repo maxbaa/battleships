@@ -12,6 +12,7 @@ public:
 
 private:
     void playersTurn(Player& player, Player& opponent);
+    void initShips(Player& player);
     Player& player1;
     Player& player2;
 };
