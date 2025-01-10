@@ -9,8 +9,11 @@ int main() {
     std::string playerName;
     std::cout << "Enter your name: ";
     std::getline(std::cin, playerName);
+
+    srand(time(nullptr));
     
-    Human player(playerName);
+    // Human player(playerName);
+    AI player("COMPUTER");
     AI computer("Computer");
     
     Game game(player, computer);

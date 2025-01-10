@@ -48,7 +48,7 @@ AttackResult Human::attack(GameBoard &enemyBoard)
         return attack(enemyBoard);
     }
 
-    hitBoard.setCell(coordinates.first, coordinates.second, result.result == ShootResult::HIT ? CellStates::HIT : CellStates::MISS);
+    hitBoard.setCell(coordinates.first, coordinates.second, (result.result == ShootResult::HIT || result.result == ShootResult::SUNK) ? CellStates::HIT : CellStates::MISS);
     return result;
 }
 

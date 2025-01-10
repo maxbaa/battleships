@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <iostream>
+#include "Ship.h"
 
 Game::Game(Player& p1, Player& p2) : player1(p1), player2(p2) {}
 
@@ -18,7 +19,27 @@ void Game::play() {
 void Game::playersTurn(Player& player, Player& opponent) {
     
     AttackResult result = player.attackTurn(opponent.getBoard());
-    // Handle result...
+    
+    bool allSunk = true;
+    // Check if the game is over
+    for(auto ship : opponent.getBoard().getShips()) {
+        if(!ship->isSunk()) {
+            allSunk = false;
+            break;
+        }
+    }
+    
+    if(allSunk) {
+        std::cout << player.getName() << " wins!" << std::endl;
+        player.getBoard().display("Your board");
+        opponent.getBoard().display("Opponent board");
+        std::cout << player.getName() << " wins!" << std::endl;
+        std::cout << "Thank you for playing <3" << std::endl;
+
+
+
+        exit(0);
+    }
 }
 
 
