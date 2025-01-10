@@ -29,7 +29,7 @@ public:
 private:
     CellStates grid[MAX_X_COORDINATE][MAX_Y_COORDINATE];
     std::vector<Ship*> ships;
-    char getCellState(int x, int y) const;
+    std::string getCellState(int x, int y) const;
 };
 
 #endif

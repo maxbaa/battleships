@@ -21,6 +21,7 @@ public:
 	std::string getName();
 	int getSize();
 	std::vector<std::pair<int, int>> getCoordinates() const;
+	std::pair<int, int> getColors() const;
 
 private:
 	int size;
@@ -28,5 +29,7 @@ private:
 	Orientation orientation;
 	std::vector<std::pair<int, int>> coordinates;
 	std::string name;
+	std::pair<int, int> colors;
+	
 };
 #endif
