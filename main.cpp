@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Human.h"
+#include "AI.h"
 #include <iostream>
 
 int main() {
@@ -12,7 +13,7 @@ int main() {
     srand(time(nullptr));
 
     Human player(playerName);
-    Human computer("Computer");
+    Human computer("Remote Player");
 
     Game game(player, computer);
     game.startNetworkGame();

@@ -4,6 +4,7 @@
 #include "GameBoard.h"
 #include "GameTypes.h"
 #include <string>
+#include <iostream>
 
 class Player {
 public:
@@ -15,8 +16,9 @@ public:
     virtual AttackResult attackTurn(GameBoard& enemyBoard) = 0;
     virtual GameBoard& getBoard() = 0;
     virtual GameBoard& getHitBoard() = 0;
-    virtual void setBoard(const GameBoard& newBoard) = 0;
-
+    virtual void setBoard(const GameBoard& newBoard) {
+        std::cerr << "setBoard not implemented for this player type." << std::endl;
+    }
     std::string getName() const { return name; }
 
 protected:

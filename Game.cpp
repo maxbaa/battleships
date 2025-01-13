@@ -44,7 +44,7 @@ void Game::startNetworkGame() {
 
         std::cout << "Both players are ready! Starting the game." << std::endl;
 
-        networkPlay(server.getSocket(), player1, player2);
+        networkPlay(server.getSocket(), player1, player2, true);
     } 
     else if (choice == 2) {
         std::string serverAddress;
@@ -68,27 +68,31 @@ void Game::startNetworkGame() {
 
         std::cout << "Both players are ready! Starting the game." << std::endl;
 
-        networkPlay(client.getSocket(), player1, player2);
+        networkPlay(client.getSocket(), player1, player2, false);
     } 
     else {
         std::cout << "Invalid choice. Exiting..." << std::endl;
     }
 }
 
-void Game::networkPlay(boost::asio::ip::tcp::socket& socket, Player& localPlayer, Player& remotePlayer) {
+void Game::networkPlay(boost::asio::ip::tcp::socket& socket, Player& localPlayer, Player& remotePlayer, bool isServer) {
     NetworkTransfer networkTransfer;
-    bool isMyTurn = true;
-    while (true) {
-        if (isMyTurn) {
+    if (isServer) {
+        while (true) {
             playersTurn(localPlayer, remotePlayer);
-            networkTransfer.sendGameBoard(localPlayer.getBoard(), socket);
-            isMyTurn = false;
-        }
-        else {
+            networkTransfer.sendGameBoard(remotePlayer.getBoard(), socket);
             std::cout << "Waiting for the opponent's turn..." << std::endl;
-            GameBoard updatedBoard = networkTransfer.receiveGameBoard(socket);
-            remotePlayer.setBoard(updatedBoard);
-            isMyTurn = true;
+            GameBoard localPlayerBoard = networkTransfer.receiveGameBoard(socket);
+            localPlayer.setBoard(localPlayerBoard);
+        }
+    }
+    else {
+        while (true) {
+            std::cout << "Waiting for the opponent's turn..." << std::endl;
+            GameBoard localPlayerBoard = networkTransfer.receiveGameBoard(socket);
+            localPlayer.setBoard(localPlayerBoard);
+            playersTurn(localPlayer, remotePlayer);
+            networkTransfer.sendGameBoard(remotePlayer.getBoard(), socket);
         }
     }
 }
@@ -113,9 +117,6 @@ void Game::playersTurn(Player& player, Player& opponent) {
         opponent.getBoard().display("Opponent board");
         std::cout << player.getName() << " wins!" << std::endl;
         std::cout << "Thank you for playing <3" << std::endl;
-
-
-
         exit(0);
     }
 }

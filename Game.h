@@ -10,7 +10,7 @@ public:
     Game(Player& player1, Player& player2);
     void play();
     void startNetworkGame();
-    void networkPlay(boost::asio::ip::tcp::socket& socket, Player& localPlayer, Player& remotePlayer);
+    void networkPlay(boost::asio::ip::tcp::socket& socket, Player& localPlayer, Player& remotePlayer, bool isServer);
 private:
     void playersTurn(Player& player, Player& opponent);
     void initShips(Player& player);
