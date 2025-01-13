@@ -52,6 +52,14 @@ void GameBoard::setCell(int x, int y, CellStates result)
     grid[x][y] = result;
 }
 
+void GameBoard::setGrid(const CellStates newGrid[MAX_X_COORDINATE][MAX_Y_COORDINATE]) {
+    for (int x = 0; x < MAX_X_COORDINATE; ++x) {
+        for (int y = 0; y < MAX_Y_COORDINATE; ++y) {
+            grid[x][y] = newGrid[x][y];
+        }
+    }
+}
+
 /**
  * @return nullptr if the ship cannot be placed, otherwise a pointer to the ship
  */
@@ -172,4 +180,18 @@ void GameBoard::display(std::string name) const
     }
 
     std::cout << std::endl;
+}
+
+void GameBoard::addShip(int size, int hits, Orientation orientation, std::pair<int, int> coordinates, std::string name, std::pair<int, int> colors)
+{
+    Ship* ship = new Ship(name, size, coordinates.first, coordinates.second, orientation);
+    ship->setHits(hits);
+    ship->setColors(colors.first, colors.second);
+    ships.push_back(ship);
+}
+
+void GameBoard::deleteShips() {
+    for (int i = 0; i < ships.size(); i++) {
+        delete ships[i];
+    }
 }

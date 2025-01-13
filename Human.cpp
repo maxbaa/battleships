@@ -107,3 +107,9 @@ GameBoard &Human::getHitBoard()
 {
     return hitBoard;
 }
+
+void Human::setBoard(const GameBoard& newBoard)
+{
+    board.deleteShips();
+    board = newBoard;
+}

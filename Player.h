@@ -15,7 +15,8 @@ public:
     virtual AttackResult attackTurn(GameBoard& enemyBoard) = 0;
     virtual GameBoard& getBoard() = 0;
     virtual GameBoard& getHitBoard() = 0;
-    
+    virtual void setBoard(const GameBoard& newBoard) = 0;
+
     std::string getName() const { return name; }
 
 protected:

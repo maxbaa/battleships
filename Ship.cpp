@@ -42,6 +42,17 @@ std::pair<int, int> Ship::getColors() const
     return colors;
 }
 
+void Ship::setColors(int color1, int color2)
+{
+    colors.first = color1;
+    colors.second = color2;
+}
+
+void Ship::setHits(int hits)
+{
+    this->hits = hits;
+}
+
 bool Ship::isSunk() const
 {
     return hits >= size;
@@ -79,7 +90,18 @@ int Ship::getSize()
     return this->size;
 }
 
+int Ship::getHits()
+{
+    return hits;
+}
+
+Orientation Ship::getOrientation()
+{
+    return orientation;
+}
+
 std::string Ship::getName()
 {
     return this->name;
 }
+

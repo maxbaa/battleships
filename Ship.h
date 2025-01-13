@@ -20,8 +20,12 @@ public:
 	ShootResult hit(int x, int y);
 	std::string getName();
 	int getSize();
+	int getHits();
+	Orientation getOrientation();
 	std::vector<std::pair<int, int>> getCoordinates() const;
 	std::pair<int, int> getColors() const;
+	void setColors(int color1, int color2);
+	void setHits(int hits);
 
 private:
 	int size;

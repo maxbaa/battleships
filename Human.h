@@ -15,6 +15,7 @@ public:
 	GameBoard& getHitBoard() override;
 	void setHitBoard(AttackResult result);
 	void receiveAttack(int x, int y);
+	void setBoard(const GameBoard& newBoard);
 
 private:
 	std::pair<int, int> getCoordinates();
