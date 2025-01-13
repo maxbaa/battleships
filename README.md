@@ -18,23 +18,15 @@ ToDo:
       - [ ] Danach Lobby Codes 
   - [ ] In Game Loop
   - [ ] Protokoll festlegen
-- [ ] Hit Detection (Shoot Methode)
+- [X] Hit Detection (Shoot Methode)
 - [X] In Game logic -> game board
 - [ ] Game Loop
   - [ ] State Machine: Hauptmenu, Ingame, Pausiert
-  - [ ] State: Am Zug, Gegner am Zug, Auswertung
+  - [X] State: Am Zug, Gegner am Zug, Auswertung
 - [ ] KI
-  - [ ] Random Init Ships
-  - [ ] Random Target selection
+  - [X] Random Init Ships
+  - [X] Random Target selection
+  - [ ] Further improvements
      
-- [ ] Mercury
-- [x] Venus
-- [x] Earth (Orbit/Moon)
-- [x] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
 
  
