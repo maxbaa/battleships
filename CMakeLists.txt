@@ -16,16 +16,21 @@ set(SOURCES
     Server.cpp
     Client.cpp
     NetworkTransfer.cpp
+    InputHandler.cpp
 )
 
 # Add executable
 add_executable(Battleships ${SOURCES})
 
-# Boost Asio hinzufügen (ohne Linker-Bibliotheken nötig, Header-Only)
-set(BOOST_ROOT "C:/Program Files/Boost/boost_1_87_0")
+# Boost Asio hinzufï¿½gen (ohne Linker-Bibliotheken nï¿½tig, Header-Only)
+# set(BOOST_ROOT "C:/Program Files/Boost/boost_1_87_0")
+set(BOOST_ROOT "./boost_1_87_0")
 include_directories(${BOOST_ROOT})
 
-# Warnings aktivieren für GCC/Clang
+# Warnings aktivieren fï¿½r GCC/Clang
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(Battleships PRIVATE -Wall -Wextra -pedantic)
 endif()
+
+find_package(Threads REQUIRED)
+target_link_libraries(Battleships PRIVATE Threads::Threads)

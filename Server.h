@@ -8,7 +8,7 @@ class Server {
 public:
     Server();
     void start();
-    boost::asio::ip::tcp::socket& Server::getSocket();
+    boost::asio::ip::tcp::socket& getSocket();
 private:
     boost::asio::io_context ioContext;
     boost::asio::ip::tcp::acceptor acceptor;
