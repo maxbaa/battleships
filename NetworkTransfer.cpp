@@ -29,13 +29,12 @@ void NetworkTransfer::sendGameBoard(GameBoard gameBoard, boost::asio::ip::tcp::s
             shipBuffer.insert(shipBuffer.end(), name.begin(), name.end());
             shipBuffer.push_back(static_cast<char>(ship->getSize()));
             shipBuffer.push_back(static_cast<char>(ship->getHits()));
-            shipBuffer.push_back(static_cast<char>(ship->getOrientation()));
+            shipBuffer.push_back(static_cast<int>(ship->getOrientation()));
 
+    
             auto coordinates = ship->getCoordinates();
-            for (const auto& coord : coordinates) {
-                shipBuffer.push_back(static_cast<char>(coord.first));
-                shipBuffer.push_back(static_cast<char>(coord.second));
-            }
+            shipBuffer.push_back(static_cast<char>(coordinates[0].first));
+            shipBuffer.push_back(static_cast<char>(coordinates[0].second));
 
             auto colors = ship->getColors();
             shipBuffer.push_back(static_cast<char>(colors.first));
@@ -44,7 +43,9 @@ void NetworkTransfer::sendGameBoard(GameBoard gameBoard, boost::asio::ip::tcp::s
         size_t shipBufferSize = shipBuffer.size();
         boost::asio::write(socket, boost::asio::buffer(&shipBufferSize, sizeof(shipBufferSize)));
 
+       
         boost::asio::write(socket, boost::asio::buffer(shipBuffer));
+
 
         std::cout << "Game board and ships sent successfully!" << std::endl;
     }
@@ -89,19 +90,14 @@ GameBoard NetworkTransfer::receiveGameBoard(boost::asio::ip::tcp::socket& socket
             int hits = static_cast<int>(shipBuffer[shipIndex++]);
             Orientation orientation = static_cast<Orientation>(shipBuffer[shipIndex++]);
 
-            std::vector<std::pair<int, int>> coordinates;
-            for (int j = 0; j < size; ++j) {
-                int x = static_cast<int>(shipBuffer[shipIndex++]);
-                int y = static_cast<int>(shipBuffer[shipIndex++]);
-                coordinates.emplace_back(x, y);
-            }
-
+            int x = static_cast<int>(shipBuffer[shipIndex++]);
+            int y = static_cast<int>(shipBuffer[shipIndex++]);
+            
             int color1 = static_cast<int>(shipBuffer[shipIndex++]);
             int color2 = static_cast<int>(shipBuffer[shipIndex++]);
 
-            gameBoard.addShip(size, hits, orientation, coordinates[0], name, { color1, color2 });
+            gameBoard.addShip(size, hits, orientation, x, y, name, { color1, color2 });
         }
-
         return gameBoard;
     }
     catch (const std::exception& e) {

@@ -98,7 +98,7 @@ Orientation Human::getOrientation()
     }
 }
 
-GameBoard &Human::getBoard()
+GameBoard& Human::getBoard()
 {
     return board;
 }

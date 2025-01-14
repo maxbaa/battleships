@@ -184,9 +184,9 @@ void GameBoard::display(std::string name) const
     std::cout << std::endl;
 }
 
-void GameBoard::addShip(int size, int hits, Orientation orientation, std::pair<int, int> coordinates, std::string name, std::pair<int, int> colors)
+void GameBoard::addShip(int size, int hits, Orientation orientation, int x, int y, std::string name, std::pair<int, int> colors)
 {
-    Ship* ship = new Ship(name, size, coordinates.first, coordinates.second, orientation);
+    Ship* ship = new Ship(name, size, x, y, orientation);
     ship->setHits(hits);
     ship->setColors(colors.first, colors.second);
     ships.push_back(ship);

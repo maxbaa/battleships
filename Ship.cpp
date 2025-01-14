@@ -31,6 +31,7 @@ Ship::Ship(const std::string &name, int size, int xCoordinate, int yCoordinate, 
      */
 
     this->colors = std::make_pair(foregroundColor + 30, backgroundColor + 40);
+    this->orientation = orientation;
 }
 
 /**

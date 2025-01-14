@@ -52,7 +52,7 @@ void Game::startNetworkGame() {
         //std::cin >> serverAddress;
 
         Client client;
-        client.connect("192.168.178.73", 12345);
+        client.connect("10.130.190.149", 12345);
         
 
         std::cout << "Place your ships, Client Player!" << std::endl;
