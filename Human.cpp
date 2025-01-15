@@ -10,7 +10,7 @@ Human::Human(const std::string &name) : Player(name), board(), hitBoard()
 
 void Human::placeShip(const std::string &name, int size)
 {
-    std::cout << "Placing " << name << " (size " << size << ")" << std::endl;
+    std::cout <<  this->name <<": Place " << name << " (size " << size << ")" << std::endl;
     while (true)
     {
         std::pair<int, int> coordinates = getCoordinates();
@@ -28,9 +28,12 @@ void Human::placeShip(const std::string &name, int size)
 AttackResult Human::attackTurn(GameBoard &enemyBoard)
 {
 
+    std::cout << "--- " << this->name << "'s turn ---" << std::endl;
+
     board.display("Your board");
-    auto res = attack(enemyBoard);
     hitBoard.display("Hitboard");
+    auto res = attack(enemyBoard);
+    hitBoard.display("Updated Hitboard");
     return res;
 }
 

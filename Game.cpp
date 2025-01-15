@@ -23,11 +23,38 @@ void Game::play()
         {
             break;
         }
+        if(mode == GameMode::HUMAN_VS_HUMAN)
+        {
+            passOverTurn();
+        }
         gameIsOver = playersTurn(player2, player1);
+        if (gameIsOver)
+        {
+            break;
+        }
+        if(mode == GameMode::HUMAN_VS_HUMAN)
+        {
+            passOverTurn();
+        }
     }
 
     // Handle game over
     handleGameOver();
+}
+
+void Game::passOverTurn()
+{
+                // Wait for enter to clear the screen
+            std::cout << "Press any key to continue to the next player's turn" << std::endl;
+            std::cin.get();
+            std::cin.clear(); // clear the error flag
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
+
+            // Clear the screen
+            std::cout << "\033[2J\033[1;1H";
+            std::cout << "Press any key to start your turn turn" << std::endl;
+            std::cin.get();
+            std::cout << "\033[2J\033[1;1H";
 }
 
 void Game::handleGameOver()
@@ -216,8 +243,8 @@ bool Game::playersTurn(Player &player, Player &opponent)
 void Game::initShips(Player &player)
 {
     player.placeShip("Aircraft Carrier", 5);
-    player.placeShip("Battleship", 4);
-    player.placeShip("Submarine", 3);
-    player.placeShip("Cruiser", 3);
-    player.placeShip("Destroyer", 2);
+    // player.placeShip("Battleship", 4);
+    // player.placeShip("Submarine", 3);
+    // player.placeShip("Cruiser", 3);
+    // player.placeShip("Destroyer", 2);
 }

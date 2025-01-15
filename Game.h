@@ -18,6 +18,7 @@ class Game {
 public:
     Game(Player& player1, Player& player2, GameMode mode);
     void play();
+    void passOverTurn();
     void startNetworkGame();
     void networkPlay(boost::asio::ip::tcp::socket& socket, Player& localPlayer, Player& remotePlayer, bool isServer);
 private:
