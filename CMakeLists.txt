@@ -23,8 +23,8 @@ set(SOURCES
 add_executable(Battleships ${SOURCES})
 
 # Boost Asio hinzuf�gen (ohne Linker-Bibliotheken n�tig, Header-Only)
-# set(BOOST_ROOT "C:/Program Files/Boost/boost_1_87_0")
-set(BOOST_ROOT "./boost_1_87_0")
+set(BOOST_ROOT "C:/Program Files/Boost/boost_1_87_0")
+# set(BOOST_ROOT "./boost_1_87_0")
 include_directories(${BOOST_ROOT})
 
 # Warnings aktivieren f�r GCC/Clang
