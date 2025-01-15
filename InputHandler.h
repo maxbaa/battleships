@@ -4,8 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <functional>
-#include <termios.h>
-#include <unistd.h>
 
 class InputHandler {
 public:
@@ -16,7 +14,6 @@ private:
     size_t currentSelection;
     void handleKeyPress();
     void render();
-    char getch();
 };
 
 #endif // INPUTHANDLER_H
