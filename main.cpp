@@ -16,11 +16,14 @@ void startGame(GameMode mode)
     {
         std::string player1Name;
         std::cout << "Enter name for Player1: ";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::getline(std::cin, player1Name);
+
 
         std::string player2Name;
         std::cout << "Enter name for Player2: ";
         std::getline(std::cin, player2Name);
+        std::cout << std::endl;
 
         Human player1(player1Name);
         Human player2(player2Name);
@@ -30,7 +33,12 @@ void startGame(GameMode mode)
     }
     case HUMAN_VS_AI:
     {
-        Human player("Player");
+        std::string playerName;
+        std::cout << "Enter your name: ";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::getline(std::cin, playerName);
+
+        Human player(playerName);
         AI computer("Computer");
         Game game(player, computer, mode);
         game.play();
@@ -48,7 +56,9 @@ void startGame(GameMode mode)
     {
         std::string playerName;
         std::cout << "Enter your name: ";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::getline(std::cin, playerName);
+
 
         srand(time(nullptr));
 
@@ -77,12 +87,6 @@ void selectGameMode()
     inputHandler.start();
 }
 
-void showOptions()
-{
-    std::cout << "Showing options..." << std::endl;
-    // Implement options logic here
-}
-
 void exitGame()
 {
     std::cout << "Exiting game..." << std::endl;
@@ -93,7 +97,6 @@ void mainMenu()
 {
     std::vector<std::pair<std::string, std::function<void()>>> options = {
         {"Start Game", selectGameMode},
-        {"Options", showOptions},
         {"Exit", exitGame}};
 
     InputHandler inputHandler(options);
