@@ -9,7 +9,6 @@ Server::Server()
 
 void Server::start() {
     try {
-
         boost::asio::ip::tcp::endpoint endpoint = acceptor.local_endpoint();
         std::cout << "Connect to IP: " << endpoint.address().to_string() << " Port: " << endpoint.port() << std::endl;
 
