@@ -215,9 +215,9 @@ bool Game::playersTurn(Player &player, Player &opponent)
 
 void Game::initShips(Player &player)
 {
-    // player.placeShip("Aircraft Carrier", 5);
-    // player.placeShip("Battleship", 4);
-    // player.placeShip("Submarine", 3);
-    // player.placeShip("Cruiser", 3);
+    player.placeShip("Aircraft Carrier", 5);
+    player.placeShip("Battleship", 4);
+    player.placeShip("Submarine", 3);
+    player.placeShip("Cruiser", 3);
     player.placeShip("Destroyer", 2);
 }
