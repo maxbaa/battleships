@@ -34,3 +34,5 @@
 /build
 /out/build/x64-Debug
 /.vs
+
+/boost_1_87_0

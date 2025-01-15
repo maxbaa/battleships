@@ -73,6 +73,8 @@ std::pair<int, int> Human::getCoordinates()
         }
 
         std::cout << "Invalid coordinates. Please try again." << std::endl;
+        std::cin.clear(); // clear the error flag
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
     }
 }
 

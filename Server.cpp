@@ -9,6 +9,11 @@ Server::Server()
 
 void Server::start() {
     try {
+
+        boost::asio::ip::tcp::endpoint endpoint = acceptor.local_endpoint();
+        std::cout << "Connect to IP: " << endpoint.address().to_string() << " Port: " << endpoint.port() << std::endl;
+
+        // std::cout << "Your Ip is: " << boost::asio::ip::host_name() << std::endl;
         std::cout << "Waiting for connection..." << std::endl;
         acceptor.accept(socket);
         std::cout << "Connected with player!" << std::endl;

@@ -50,8 +50,6 @@ ShootResult GameBoard::shoot(int x, int y)
 void GameBoard::setCell(int x, int y, CellStates result)
 {
     grid[x][y] = result;
-    std::cout << "X: " << x << ", Y: " << y << std::endl
-        << "result: " << static_cast<int>(result) << std::endl;
 }
 
 void GameBoard::setGrid(const CellStates newGrid[MAX_X_COORDINATE][MAX_Y_COORDINATE]) {
